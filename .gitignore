@@ -1,1 +1,4 @@
-bin/Readme.txt
+bin*
+bin/*
+.metadata*
+.metadata/*

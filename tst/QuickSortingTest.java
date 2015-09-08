@@ -4,13 +4,13 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class BubbleSortingTest {
+public class QuickSortingTest {
 
 	SortingAlgorithm sortingAlgorithm;
 	
 	@Before
 	public void setup() {
-		sortingAlgorithm = new BubbleSorting();
+		sortingAlgorithm = new QuickSorting();
 	}
 	
 	@Test

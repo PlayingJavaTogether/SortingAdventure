@@ -17,13 +17,13 @@ public class QuickSortingTest {
 	public void simpleTest() {
 		// 3A:
 		
-		//  Arrange -- подготовка
+		//  Arrange
 		String[] listToSort = new String[] { "orange", "apple", "melon", "grapes", "banana" };
 		
-		// Act -- действие
+		// Act
 		String[] result = sortingAlgorithm.sort(listToSort);
 		
-		// Assert -- проверка предположений
+		// Assert
 		Assert.assertNotNull(result);
 		Assert.assertTrue(result.length > 0);
 		Assert.assertEquals(listToSort.length, result.length);
@@ -36,13 +36,13 @@ public class QuickSortingTest {
 	public void smarterTest() {
 		// 3A:
 		
-		//  Arrange -- подготовка
+		//  Arrange
 		String[] listToSort = new String[] { "pear", "apple" };
 		
-		// Act -- действие
+		// Act
 		String[] result = sortingAlgorithm.sort(listToSort);
 		
-		// Assert -- проверка предположений
+		// Assert
 		Assert.assertNotNull(result);
 		Assert.assertTrue(result.length > 0);
 		Assert.assertEquals(listToSort.length, result.length);
@@ -55,13 +55,13 @@ public class QuickSortingTest {
 	public void emptyArrayTest() {
 		// 3A:
 		
-		//  Arrange -- подготовка
+		//  Arrange
 		String[] listToSort = new String[] { };
 		
-		// Act -- действие
+		// Act
 		String[] result = sortingAlgorithm.sort(listToSort);
 		
-		// Assert -- проверка предположений
+		// Assert
 		Assert.assertNotNull(result);
 		Assert.assertEquals(listToSort.length, result.length);
 
@@ -73,13 +73,13 @@ public class QuickSortingTest {
 	public void anotherTest() {
 		// 3A:
 		
-		//  Arrange -- подготовка
+		//  Arrange
 		String[] listToSort = new String[] { "a", "b", "c" };
 		
-		// Act -- действие
+		// Act
 		String[] result = sortingAlgorithm.sort(listToSort);
 		
-		// Assert -- проверка предположений
+		// Assert
 		Assert.assertNotNull(result);
 		Assert.assertEquals(listToSort.length, result.length);
 
@@ -91,13 +91,13 @@ public class QuickSortingTest {
 	public void yetAnotherTest() {
 		// 3A:
 		
-		//  Arrange -- подготовка
+		//  Arrange
 		String[] listToSort = new String[] { "a", "b", "c", "b" };
 		
-		// Act -- действие
+		// Act
 		String[] result = sortingAlgorithm.sort(listToSort);
 		
-		// Assert -- проверка предположений
+		// Assert
 		Assert.assertNotNull(result);
 		Assert.assertEquals(listToSort.length, result.length);
 
@@ -109,17 +109,31 @@ public class QuickSortingTest {
 	public void capitalizationTest() {
 		// 3A:
 		
-		//  Arrange -- подготовка
+		//  Arrange
 		String[] listToSort = new String[] { "a", "b", "c", "A" };
 		
-		// Act -- действие
+		// Act
 		String[] result = sortingAlgorithm.sort(listToSort);
 		
-		// Assert -- проверка предположений
+		// Assert
 		Assert.assertNotNull(result);
 		Assert.assertEquals(listToSort.length, result.length);
 
 		String[] expectedResult = new String[] { "A", "a", "b", "c" };
+		Assert.assertTrue(Arrays.equals(expectedResult, result));
+	}
+
+
+	@Test
+	public void smallTest() {
+		String[] listToSort = new String[] { "d", "b", "a", "c" };
+		
+		String[] result = sortingAlgorithm.sort(listToSort);
+		
+		Assert.assertNotNull(result);
+		Assert.assertEquals(listToSort.length, result.length);
+
+		String[] expectedResult = new String[] { "a", "b", "c", "d" };
 		Assert.assertTrue(Arrays.equals(expectedResult, result));
 	}
 

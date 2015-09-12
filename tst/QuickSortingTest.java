@@ -122,23 +122,5 @@ public class QuickSortingTest {
 		String[] expectedResult = new String[] { "A", "a", "b", "c" };
 		Assert.assertTrue(Arrays.equals(expectedResult, result));
 	}
-	
-	@Test
-	public void cyrillycTest() {
-		// 3A:
-		
-		//  Arrange -- подготовка
-		String[] listToSort = new String[] { "действие", "action" };
-		
-		// Act -- действие
-		String[] result = sortingAlgorithm.sort(listToSort);
-		
-		// Assert -- проверка предположений
-		Assert.assertNotNull(result);
-		Assert.assertEquals(listToSort.length, result.length);
-
-		String[] expectedResult = new String[] { "action", "действие" };
-		Assert.assertTrue(Arrays.equals(expectedResult, result));
-	}
 
 }

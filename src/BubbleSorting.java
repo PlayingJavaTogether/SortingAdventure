@@ -3,21 +3,21 @@ public class BubbleSorting implements SortingAlgorithm {
 
 	@Override
 	public String[] sort(String[] listToSort) {
-		String[] reversedList = listToSort;
-		for (int counterOne=0; counterOne<reversedList.length-1; counterOne++){
-			
-			for (int counterTwo=0; counterTwo < reversedList.length-counterOne-1; counterTwo++){
-				
-				if (reversedList[counterTwo].compareTo(reversedList[counterTwo+1]) > 0){
-					
-					String buffer = reversedList[counterTwo];
-					reversedList[counterTwo] = reversedList[counterTwo+1];
-					reversedList[counterTwo+1] = buffer;
+		String[] resultList = listToSort;
+		for (int indexOne = 0; indexOne < resultList.length - 1; indexOne++) {
+
+			for (int indexTwo = 0; indexTwo < resultList.length - indexOne - 1; indexTwo++) {
+
+				if (resultList[indexTwo].compareTo(resultList[indexTwo + 1]) > 0) {
+
+					String buffer = resultList[indexTwo];
+					resultList[indexTwo] = resultList[indexTwo + 1];
+					resultList[indexTwo + 1] = buffer;
 				}
 			}
 		}
-		
-		return reversedList;
+
+		return resultList;
 	}
-	
+
 }

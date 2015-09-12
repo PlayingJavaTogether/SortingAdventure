@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 
 // TODO : http://me.dt.in.th/page/Quicksort/
 
@@ -5,13 +7,18 @@ public class QuickSorting implements SortingAlgorithm {
 
 	@Override
 	public String[] sort(String[] listToSort) {
-		if (listToSort.length <= 1)
-			return listToSort;
-		
-		return sort(listToSort, 0, listToSort.length - 1);
+		sort(listToSort, 0, listToSort.length - 1);
+		return listToSort;
 	}
 	
-	private String[] sort(String[] listToSort, int leftBoundary, int rightBoundary) {
+	// TODO this method can be a type of void since we sort in-place
+	private void sort(String[] listToSort, int leftBoundary, int rightBoundary) {
+		boolean arrayIsSortedBecause0or1element =
+				rightBoundary - leftBoundary <= 0;
+		if (arrayIsSortedBecause0or1element) {
+			return;
+		}
+		
 		// 1. choose pivot
 		int pivotIndex = (leftBoundary + rightBoundary) / 2;
 		
@@ -26,7 +33,7 @@ public class QuickSorting implements SortingAlgorithm {
 		int indexOfOpening = tempIndexOfPivot + 1;
 		
 		// 3. do partitioning <--
-		for ( ; indexOfOpening <= rightBoundary; indexOfOpening++) { // or rightBoundary - 1 ????
+		for ( ; indexOfOpening <= rightBoundary; indexOfOpening++) {
 			
 			String valueOfPivot = listToSort[tempIndexOfPivot];
 			String currentElement = listToSort[indexOfOpening];
@@ -34,16 +41,16 @@ public class QuickSorting implements SortingAlgorithm {
 			
 			if (isSwapRequired) {
 				swap(listToSort, indexOfOpening, indexOfLeftMostOpen);
+				indexOfLastClosed = indexOfLeftMostOpen;
 				indexOfLeftMostOpen++;
-				indexOfLastClosed = indexOfOpening; // ?????????????????????????????????????
 			}
 		}
 		
 		swap(listToSort, tempIndexOfPivot, indexOfLastClosed);
-		
 		int newIndexOfPivot = indexOfLastClosed;
 		
-		
+		System.out.println(Arrays.toString(listToSort) + "   element @" + newIndexOfPivot + " is in it's final place now.");
+
 		if (newIndexOfPivot > leftBoundary) {
 			// 4.a sort (left) first partion
 			sort(listToSort, leftBoundary, newIndexOfPivot - 1);
@@ -52,8 +59,6 @@ public class QuickSorting implements SortingAlgorithm {
 			// 4.b sort (right) third partition
 			sort(listToSort, newIndexOfPivot + 1, rightBoundary);
 		}
-		
-		return listToSort;
 	}
 	
 	private void swap(String[] listToSort, int index1, int index2) {
@@ -89,5 +94,4 @@ public class QuickSorting implements SortingAlgorithm {
 
 		return resultList;
 	}
-
 }

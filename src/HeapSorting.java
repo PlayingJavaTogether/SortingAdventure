@@ -11,8 +11,7 @@ public class HeapSorting implements SortingAlgorithm {
 			shiftUp(auxiliaryArray, counterOfÀrray);
 			counterOfÀrray++;
 		}
-		
-		
+
 		String[] resultArray = new String[listToSort.length];
 		counterOfÀrray = 0;
 		// Second step (RemovingRoot) and Other (ShiftDown) :
@@ -23,40 +22,28 @@ public class HeapSorting implements SortingAlgorithm {
 			shiftDown(auxiliaryArray, 0, rightBoundary);
 			counterOfÀrray++;
 		}
-
 		return resultArray;
 	}
 
 	private void shiftDown(String[] auxiliaryArray, int indexOfStartElement, int rightBoundary) {
 		// 1-----condition
-		int childIndex1 = 0;
-		int childIndex2 = 0;
-		if (((2 * indexOfStartElement + 2) > rightBoundary) || ((2 * indexOfStartElement + 1) > rightBoundary)) {
+		int childIndex1 = 2 * indexOfStartElement + 2;
+		int childIndex2 = 2 * indexOfStartElement + 1;
+		if ((childIndex1 > rightBoundary) || (childIndex2 > rightBoundary)) {
 			return;
 		} else {
-			childIndex1 = 2 * indexOfStartElement + 2;
-			childIndex2 = 2 * indexOfStartElement + 1;
-			if ((auxiliaryArray[indexOfStartElement].compareTo(auxiliaryArray[childIndex1]) >= 0)
-					| (auxiliaryArray[indexOfStartElement].compareTo(auxiliaryArray[childIndex2]) >= 0)) {
+			if ((auxiliaryArray[indexOfStartElement].compareTo(auxiliaryArray[childIndex1]) <= 0)
+					&& (auxiliaryArray[indexOfStartElement].compareTo(auxiliaryArray[childIndex2]) <= 0)) {
 				return;
 			}
+			int min = min(auxiliaryArray, childIndex1, childIndex2);
+			swap(auxiliaryArray, indexOfStartElement, min);
+			shiftDown(auxiliaryArray, min, rightBoundary);
 		}
-		
-		
-		// 2-----replacement and repeat
-		if ((2 * indexOfStartElement + 2) > rightBoundary) {
-			swap(auxiliaryArray, indexOfStartElement, childIndex1);
-			shiftDown(auxiliaryArray, childIndex1, rightBoundary);
-		} else {
-			int max = max(auxiliaryArray, childIndex1, childIndex2);
-			swap(auxiliaryArray, indexOfStartElement, max);
-			shiftDown(auxiliaryArray, max, rightBoundary);
-		}
-
 	}
 
-	private int max(String[] auxiliaryArray, int childIndex1, int childIndex2) {
-		if (auxiliaryArray[childIndex1].compareTo(auxiliaryArray[childIndex2]) > 0) {
+	private int min(String[] auxiliaryArray, int childIndex1, int childIndex2) {
+		if (auxiliaryArray[childIndex1].compareTo(auxiliaryArray[childIndex2]) < 0) {
 			return childIndex1;
 		} else {
 			return childIndex2;
@@ -70,7 +57,7 @@ public class HeapSorting implements SortingAlgorithm {
 			return;
 		} else {
 			parentIndex = (int) (indexOfStartElement - 1) / 2;
-			if (auxiliaryArray[indexOfStartElement].compareTo(auxiliaryArray[parentIndex]) <= 0) {
+			if (auxiliaryArray[indexOfStartElement].compareTo(auxiliaryArray[parentIndex]) > 0) {
 				return;
 			}
 		}

@@ -1,9 +1,7 @@
 import java.util.Arrays;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
-@Ignore
 public class CrossTest {
 	private final SortingAlgorithm bubbleSort = new BubbleSorting();
 	private final SortingAlgorithm quickSort = new QuickSorting();

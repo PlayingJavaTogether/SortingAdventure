@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 
 // TODO : http://me.dt.in.th/page/Quicksort/
 
@@ -11,7 +9,6 @@ public class QuickSorting implements SortingAlgorithm {
 		return listToSort;
 	}
 	
-	// TODO this method can be a type of void since we sort in-place
 	private void sort(String[] listToSort, int leftBoundary, int rightBoundary) {
 		boolean arrayIsSortedBecause0or1element =
 				rightBoundary - leftBoundary <= 0;
@@ -49,7 +46,7 @@ public class QuickSorting implements SortingAlgorithm {
 		swap(listToSort, tempIndexOfPivot, indexOfLastClosed);
 		int newIndexOfPivot = indexOfLastClosed;
 		
-		System.out.println(Arrays.toString(listToSort) + "   element @" + newIndexOfPivot + " is in it's final place now.");
+		// System.out.println(Arrays.toString(listToSort) + "   element @" + newIndexOfPivot + " is in it's final place now.");
 
 		if (newIndexOfPivot > leftBoundary) {
 			// 4.a sort (left) first partion
@@ -93,5 +90,15 @@ public class QuickSorting implements SortingAlgorithm {
 		}
 
 		return resultList;
+	}
+
+	
+	@Override
+	public void resetPerformanceCounters() {
+	}
+
+	@Override
+	public PerformanceInfo getPerformanceOfLastSort() {
+		return null;
 	}
 }

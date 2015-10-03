@@ -2,10 +2,8 @@ import java.util.Arrays;
 
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
-@Ignore
 public class BubbleSortingTest {
 
 	SortingAlgorithm sortingAlgorithm;

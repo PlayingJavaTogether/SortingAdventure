@@ -1,4 +1,5 @@
 
+
 public class HeapSorting implements SortingAlgorithm {
 
 	@Override
@@ -72,6 +73,17 @@ public class HeapSorting implements SortingAlgorithm {
 		String buffer = auxiliaryArray[index1];
 		auxiliaryArray[index1] = auxiliaryArray[index2];
 		auxiliaryArray[index2] = buffer;
+	}
+
+
+	
+	@Override
+	public void resetPerformanceCounters() {
+	}
+
+	@Override
+	public PerformanceInfo getPerformanceOfLastSort() {
+		return null;
 	}
 
 }
